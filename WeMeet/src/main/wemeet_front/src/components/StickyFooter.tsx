@@ -35,6 +35,7 @@ export default function StickyFooter() {
                 <CssBaseline />
                 <Box
                     component="footer"
+                    maxWidth="xs"
                     sx={{
                         py: 0,
                         px: 0,

@@ -45,7 +45,8 @@ export default function SignUp() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                minHeight: "calc(100vh - 64px)"
+                minHeight: "calc(100vh - 64px)",
+                backgroundColor: "white"
             }}>
                 <CssBaseline />
                 <Box
