@@ -8,6 +8,9 @@ import {Provider, useSelector} from "react-redux";
 import store from "./store";
 import MapInformation from "./components/MapInfomation";
 import {usePage} from "./hooks/usePage";
+import MapTest from "./components/MapTest";
+import Routers from "./Routers";
+
 
 function App() {
     return (
