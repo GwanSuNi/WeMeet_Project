@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {Skeleton} from "@mui/material";
+import {Fab, Skeleton} from "@mui/material";
 import Box from "@mui/material/Box";
+import CreateIcon from '@mui/icons-material/Create';
 
 let mapInstance: naver.maps.Map | null = null;
 
@@ -71,7 +72,19 @@ function MapInformation({latitude, longitude,}: {
                 {/*{isMapLoaded && (*/}
                 {/*    <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>*/}
                 {/*)}*/}
-                {(isMapLoaded) ? (<div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>)
+                {(isMapLoaded) ? (<Box sx={{width: '100%',  height: 'calc(100vh - 56px)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center', // 수평 가운데 정렬
+                        alignItems: 'center',}}><div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>
+                        <Fab variant="extended" size="medium" color="primary" sx={{
+                            position: 'absolute', // 절대 위치 설정
+                            bottom: '80px', // 하단 여백
+                        }}>
+                            <CreateIcon sx={{ mr: 1 }} />
+                            일지 작성
+                        </Fab>
+                    </Box>)
                     : (<Box sx={{width: '100%',  height: 'calc(100vh - 56px)',
                         display: 'flex',
                         justifyContent: 'center', // 수평 가운데 정렬
