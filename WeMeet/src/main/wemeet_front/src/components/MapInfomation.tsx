@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Fab, Skeleton} from "@mui/material";
+import React, {useEffect, useState} from 'react';
+import {CircularProgress, Fab} from "@mui/material";
 import Box from "@mui/material/Box";
 import CreateIcon from '@mui/icons-material/Create';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -7,7 +7,6 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import PersonIcon from '@mui/icons-material/Person';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import HistoryIcon from '@mui/icons-material/History';
-import {HistoryOutlined} from "@mui/icons-material";
 
 let mapInstance: naver.maps.Map | null = null;
 
@@ -86,8 +85,7 @@ function MapInformation({latitude, longitude,}: {
                         justifyContent: 'center', // 수평 가운데 정렬
                         alignItems: 'center',
                     }}>
-                        <Skeleton sx={{bgcolor: 'whitesmoke', height: 'calc(100vh - 56px)'}} variant="rectangular"
-                                  animation={'wave'} width={'100rem'}/>
+                        <CircularProgress />
                     </Box>)}
 
             </div>
