@@ -2,6 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {Fab, Skeleton} from "@mui/material";
 import Box from "@mui/material/Box";
 import CreateIcon from '@mui/icons-material/Create';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import PersonIcon from '@mui/icons-material/Person';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import HistoryIcon from '@mui/icons-material/History';
+import {HistoryOutlined} from "@mui/icons-material";
 
 let mapInstance: naver.maps.Map | null = null;
 
@@ -26,7 +32,7 @@ function MapInformation({latitude, longitude,}: {
             zoomControl: true,
             zoomControlOptions: {
                 style: naver.maps.ZoomControlStyle.SMALL,
-                position: naver.maps.Position.TOP_RIGHT,
+                position: naver.maps.Position.RIGHT_CENTER,
             },
             center: new naver.maps.LatLng(latitude, longitude),
             zoom: 16,
@@ -72,28 +78,103 @@ function MapInformation({latitude, longitude,}: {
                 {/*{isMapLoaded && (*/}
                 {/*    <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>*/}
                 {/*)}*/}
-                {(isMapLoaded) ? (<Box sx={{width: '100%',  height: 'calc(100vh - 56px)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'center', // 수평 가운데 정렬
-                        alignItems: 'center',}}><div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>
-                        <Fab variant="extended" size="medium" color="primary" sx={{
-                            position: 'absolute', // 절대 위치 설정
-                            bottom: '80px', // 하단 여백
-                        }}>
-                            <CreateIcon sx={{ mr: 1 }} />
-                            일지 작성
-                        </Fab>
-                    </Box>)
-                    : (<Box sx={{width: '100%',  height: 'calc(100vh - 56px)',
+                {(isMapLoaded) ?
+                    (<MapContent/>)
+                    : (<Box sx={{
+                        width: '100%', height: 'calc(100vh - 56px)',
                         display: 'flex',
                         justifyContent: 'center', // 수평 가운데 정렬
-                        alignItems: 'center',}}>
-                        <Skeleton sx={{bgcolor: 'whitesmoke', height:'calc(100vh - 56px)'}}variant="rectangular" animation={'wave'} width={'100rem'}/></Box>)}
+                        alignItems: 'center',
+                    }}>
+                        <Skeleton sx={{bgcolor: 'whitesmoke', height: 'calc(100vh - 56px)'}} variant="rectangular"
+                                  animation={'wave'} width={'100rem'}/>
+                    </Box>)}
 
             </div>
         </>
     );
 }
+
+function MapContent() {
+    const [isHovered, setIsHovered] = useState<{
+        myInfo: boolean;
+        notification: boolean;
+        history: boolean;
+    }>({
+        myInfo: false,
+        notification: false,
+        history: false,
+    });
+    const handleMouseEnter = (name: keyof typeof isHovered) => {
+        setIsHovered((prevState) => ({ ...prevState, [name]: true }));
+    };
+
+    const handleMouseLeave = (name: keyof typeof isHovered) => {
+        setIsHovered((prevState) => ({ ...prevState, [name]: false }));
+    };
+
+    return (
+        <Box sx={{
+            width: '100%', height: 'calc(100vh - 56px)',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center', // 수평 가운데 정렬
+            alignItems: 'center',
+            position: 'relative', // Box 컴포넌트에 상대적인 위치 설정
+        }}>
+            <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>
+            <Fab color="inherit" size={"medium"} aria-label="myInfo" sx={{
+                position: 'absolute',
+                left: '10px',
+                top: '10px',
+                // '&:hover': {
+                //     backgroundColor: 'transparent',
+                // },
+            }}
+                 onMouseEnter={() => handleMouseEnter('myInfo')}
+                 onMouseLeave={() => handleMouseLeave('myInfo')}>
+                {isHovered.myInfo ? (
+                    <PersonIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                ) : (
+                    <PersonOutlinedIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                )}
+            </Fab>
+            <Fab size={"medium"} color="inherit" aria-label="notification" sx={{
+                position: 'absolute',
+                right: '70px',
+                top: '10px'
+            }}
+                 onMouseEnter={() => handleMouseEnter('notification')}
+                 onMouseLeave={() => handleMouseLeave('notification')}>
+                {isHovered.notification ? (
+                    <NotificationsIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                ) : (
+                    <NotificationsOutlinedIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                )}
+            </Fab>
+            <Fab size={"medium"} color="inherit" aria-label="history" sx={{
+                position: 'absolute',
+                right: '10px',
+                top: '10px'
+            }}
+                 onMouseEnter={() => handleMouseEnter('history')}
+                 onMouseLeave={() => handleMouseLeave('history')}>
+                {/*<HistoryIcon/>*/}
+                {isHovered.history ? (
+                    <HistoryIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                ) : (
+                    <HistoryIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                )}
+            </Fab>
+            <Fab variant="extended" size="medium" color="primary" sx={{
+                position: 'absolute', // 절대 위치 설정
+                bottom: '20px', // 하단 여백
+            }}>
+                <CreateIcon sx={{mr: 1}}/>
+                일지 작성
+            </Fab>
+        </Box>);
+}
+
 
 export default MapInformation;
