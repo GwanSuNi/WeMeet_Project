@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import NavBar from "./NavBar";
 import {PaletteMode} from "@mui/material";
+import LabelBottomNavigation from "./LabelBottomNavigation";
 
 function Copyright() {
     return (
@@ -35,7 +36,7 @@ export default function StickyFooter() {
                 <CssBaseline />
                 <Box
                     component="footer"
-                    maxWidth="xs"
+                    maxWidth="lg"
                     sx={{
                         py: 0,
                         px: 0,
@@ -47,7 +48,8 @@ export default function StickyFooter() {
                     }}
                 >
                     <Container disableGutters={true}>
-                        <NavBar mode={mode} toggleColorMode={toggleColorMode}/>
+                        {/*<NavBar mode={mode} toggleColorMode={toggleColorMode}/>*/}
+                        <LabelBottomNavigation/>
                     </Container>
                 </Box>
         </ThemeProvider>

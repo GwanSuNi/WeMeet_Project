@@ -1,4 +1,6 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+import {Skeleton} from "@mui/material";
+import Box from "@mui/material/Box";
 
 let mapInstance: naver.maps.Map | null = null;
 
@@ -10,7 +12,7 @@ const loadScript = (src: string, callback: () => void) => {
     document.head.appendChild(script);
 };
 
-function MapInformation({ latitude, longitude,}: {
+function MapInformation({latitude, longitude,}: {
     latitude: number;
     longitude: number;
 }) {
@@ -66,9 +68,16 @@ function MapInformation({ latitude, longitude,}: {
         <>
             {/* 위치 정보(지도) */}
             <div>
-                {isMapLoaded && (
-                    <div id="map" style={{width: '100%', height: 'calc(100vh - 64px)'}}/>
-                )}
+                {/*{isMapLoaded && (*/}
+                {/*    <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>*/}
+                {/*)}*/}
+                {(isMapLoaded) ? (<div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>)
+                    : (<Box sx={{width: '100%',  height: 'calc(100vh - 56px)',
+                        display: 'flex',
+                        justifyContent: 'center', // 수평 가운데 정렬
+                        alignItems: 'center',}}>
+                        <Skeleton sx={{bgcolor: 'whitesmoke', height:'calc(100vh - 56px)'}}variant="rectangular" animation={'wave'} width={'100rem'}/></Box>)}
+
             </div>
         </>
     );
