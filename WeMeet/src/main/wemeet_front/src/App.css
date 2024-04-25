@@ -1,3 +1,40 @@
+/* pc */
+@media all and (min-width: 1025px) {
+  .desktop{
+    width: 767px;
+    height: 600px;
+    margin: 0 auto;
+  }
+  .smop{
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+  }
+  .desktop-frame{
+    display: flex;
+    justify-content: center; /* 가로 가운데 정렬 */
+    align-items: center; /* 세로 가운데 정렬 */
+    flex-direction: row; /* 세로로 일렬로 정렬 */
+  }
+}
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .tablet{
+    width: 767px;
+    height: 600px;
+    margin: 0 auto; /* 화면 가운데 정렬 */
+  }
+}
+
+/* phone */
+@media all and (max-width: 767px) {
+  .mobile{
+    height: 100%;
+    width: 100%;
+  }
+}
+
 .App {
   text-align: center;
 }
