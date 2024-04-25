@@ -9,6 +9,7 @@ import MainLayout from "./layout/MainLayout";
 import MapInformation from "./components/MapInfomation";
 import MapTest from "./components/MapTest";
 import CourseSuggest from "./components/CourseSuggest";
+import WeMeetLogo from "./components/WeMeetLogo";
 
 function App() {
     const [page, setPage] = useState(1);
@@ -24,6 +25,7 @@ function App() {
                 {/*page state에 따라 어떤 컴포넌트를 보여줄지 분기해주는 코드*/}
                 {/*<MapInformation latitude={geo.latitude} longitude={geo.logitude}/>*/}
                 <CourseSuggest/>
+                {/*<WeMeetLogo text={"AI 데이트 코스 추천"}/>*/}
             </MainLayout>
         </>
     );

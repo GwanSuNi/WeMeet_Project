@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import '../css/logoStyle.css';
 import TextField from "@mui/material/TextField";
 import SendIcon from '@mui/icons-material/Send';
+import WeMeetLogo from "./WeMeetLogo";
 
 export default function CourseSuggest() {
     return (
@@ -20,27 +21,11 @@ export default function CourseSuggest() {
                 justifyContent: 'center',
                 position: 'relative',
             }}>
-                <CourseHeader/>
+                {/*<CourseHeader/>*/}
+                <WeMeetLogo text={"AI 데이트 코스 추천"}/>
                 <OutlinedCard/>
             </Container>
         </>
-    );
-}
-
-function CourseHeader() {
-    return (
-        <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            position: 'absolute',
-            top: 0
-        }}>
-            <img className="logoImg" src={"image/wemeetlogo.png"} alt={"WeMeet Logo"}/>
-            <Typography variant="h4" gutterBottom>
-                AI 데이트 코스 추천
-            </Typography>
-        </Box>
     );
 }
 
