@@ -5,17 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {CssBaseline} from "@mui/material";
 import {BrowserRouter} from "react-router-dom";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+import './assets/fonts/Font.css';
+
+// 테마 생성
+const theme = createTheme({
+    typography: {
+        fontFamily: 'NanumGothic'
+    }
+});
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <CssBaseline enableColorScheme>
-            <BrowserRouter>
-                <App/>
-            </BrowserRouter>
-        </CssBaseline>
+        {/* 테마 적용 */}
+        <ThemeProvider theme={theme}>
+            <CssBaseline enableColorScheme>
+                <BrowserRouter>
+                    <App/>
+                </BrowserRouter>
+            </CssBaseline>
+        </ThemeProvider>
     </React.StrictMode>
 );
 
