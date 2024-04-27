@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import NavBar from "./NavBar";
 import {PaletteMode} from "@mui/material";
-import LabelBottomNavigation from "./LabelBottomNavigation";
+import LabelBottomNavigation from "../features/bottomNav/LabelBottomNavigation";
 
 function Copyright() {
     return (

@@ -1,46 +1,57 @@
 import React, {useState} from 'react';
 import './App.css';
 import SignUp from "./components/SignUp";
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import StickyFooter from "./components/StickyFooter";
-import Box from "@mui/material/Box";
 import MainLayout from "./layout/MainLayout";
-import { useMediaQuery } from 'react-responsive'
-import MapInformation from "./components/MapInfomation";
-import MapTest from "./components/MapTest";
+import {useMediaQuery} from 'react-responsive'
 import CourseSuggest from "./components/CourseSuggest";
-import WeMeetLogo from "./components/WeMeetLogo";
+import {Provider, useSelector} from "react-redux";
+import store from "./store";
+import MapInformation from "./components/MapInfomation";
+import {usePage} from "./hooks/usePage";
 
 function App() {
-    const [page, setPage] = useState(1);
-    const geo : any = {
-        latitude : 37.3595704,
-        logitude : 127.105399
-    }
     return (
         <>
-            <Desktop/>
-            <Tablet/>
-            <Mobile/>
+            <Provider store={store}>
+                <Desktop/>
+                <Tablet/>
+                <Mobile/>
+            </Provider>
         </>
     );
 }
+const PageComponent = () => {
+    const page = usePage(); // redux에서 page값을 조회하는 커스텀 hook
+    const geo: any = {
+        latitude: 37.3595704,
+        logitude: 127.105399
+    }
+    switch (page) {
+        case 0:
+            return <CourseSuggest/>;
+        case 1:
+            return <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>;
+        case 2:
+            return <div>People Pick</div>;
+        default:
+            return <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>;;
+    }
+}
 const Desktop = () => {
-    const isDesktop = useMediaQuery({ minWidth: 1025 })
+    const isDesktop = useMediaQuery({minWidth: 1025})
     return isDesktop ? (
         <div className='desktop-frame'>
             <div className='smop'>SMOP</div>
             <div className='desktop'>
                 <MainLayout>
-                    <SignUp/>
+                    <PageComponent/>
                 </MainLayout>
             </div>
         </div>
     ) : null
 }
 const Tablet = () => {
-    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 })
+    const isTablet = useMediaQuery({minWidth: 768, maxWidth: 1024})
     return isTablet ? (
         <div className='tablet'>
             <MainLayout>
@@ -48,18 +59,18 @@ const Tablet = () => {
                 {/*<MapTest/>*/}
                 {/*page state에 따라 어떤 컴포넌트를 보여줄지 분기해주는 코드*/}
                 {/*<MapInformation latitude={geo.latitude} longitude={geo.logitude}/>*/}
-                <CourseSuggest/>
+                <PageComponent/>
                 {/*<WeMeetLogo text={"AI 데이트 코스 추천"}/>*/}
             </MainLayout>
         </div>
     ) : null
 }
 const Mobile = () => {
-    const isMobile = useMediaQuery({ maxWidth: 767 })
+    const isMobile = useMediaQuery({maxWidth: 767})
     return isMobile ? (
         <div className='mobile'>
             <MainLayout>
-                <SignUp/>
+                <PageComponent/>
             </MainLayout>
         </div>
     ) : null
