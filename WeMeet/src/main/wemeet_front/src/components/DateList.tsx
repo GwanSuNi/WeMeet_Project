@@ -19,6 +19,7 @@ export default function DateList({ ListItem, listData }: ListItemProps) {
                 width='100%'
                 pt={2}
             >
+                // TODO: key 값을 고유하게 식별될 수 있는 컬럼값으로 변경
                 {listData.map((itemData, i) => (
                     <ListItem {...itemData} key={i}/>
                 ))}
