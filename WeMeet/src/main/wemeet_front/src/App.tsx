@@ -1,17 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import SignUp from "./components/SignUp";
 import MainLayout from "./layout/MainLayout";
 import {useMediaQuery} from 'react-responsive'
 import CourseSuggest from "./components/CourseSuggest";
-import {Provider, useSelector} from "react-redux";
+import {Provider} from "react-redux";
 import store from "./store";
 import MapInformation from "./components/MapInfomation";
 import {usePage} from "./hooks/usePage";
-import MapTest from "./components/MapTest";
-import Routers from "./Routers";
 import Router from "./Router";
-
 
 function App() {
     return (
@@ -24,6 +20,7 @@ function App() {
         </>
     );
 }
+
 const PageComponent = () => {
     const page = usePage(); // redux에서 page값을 조회하는 커스텀 hook
     const geo: any = {
@@ -38,7 +35,8 @@ const PageComponent = () => {
         case 2:
             return <div>People Pick</div>;
         default:
-            return <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>;;
+            return <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>;
+            ;
     }
 }
 const Desktop = () => {
