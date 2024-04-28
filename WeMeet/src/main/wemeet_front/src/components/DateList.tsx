@@ -19,8 +19,8 @@ export default function DateList({ ListItem, listData }: ListItemProps) {
                 width='100%'
                 pt={2}
             >
-                {listData.map((itemData, index) => (
-                    <ListItem {...itemData}/>
+                {listData.map((itemData, i) => (
+                    <ListItem {...itemData} key={i}/>
                 ))}
             </Stack>
         </Container>
