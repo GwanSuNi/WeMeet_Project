@@ -4,7 +4,7 @@ import React from "react";
 
 export default function MainLayout(props: { children: React.ReactNode }) {
     return (
-        <Box width='600px' bgcolor='black'>
+        <Box width='600px' bgcolor='white'>
             <main
                 style={{
                     display: 'flex',

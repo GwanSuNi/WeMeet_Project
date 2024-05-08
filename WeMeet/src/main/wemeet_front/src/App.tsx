@@ -1,19 +1,16 @@
 import React from 'react';
 import './App.css';
-import MainLayout from "./layout/MainLayout";
 import CourseSuggest from "./components/CourseSuggest";
 import MapInformation from "./components/MapInfomation";
 import {usePage} from "./hooks/usePage";
-import Router from "./Router";
 import Box from "@mui/material/Box";
+import Routes from "./routes";
 
 function App() {
     return (
-        <Box display='flex' justifyContent='space-evenly'>
+        <Box display='flex' justifyContent='space-evenly' bgcolor='black'>
             <Box display={{xs: 'none', lg: 'flex'}} width='300px' bgcolor='yellowgreen'/>
-            <MainLayout>
-                <Router/>
-            </MainLayout>
+            <Routes/>
         </Box>
     );
 }
