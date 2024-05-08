@@ -1,23 +1,20 @@
 import React from 'react';
 import './App.css';
 import MainLayout from "./layout/MainLayout";
-import {useMediaQuery} from 'react-responsive'
 import CourseSuggest from "./components/CourseSuggest";
-import {Provider} from "react-redux";
-import store from "./store";
 import MapInformation from "./components/MapInfomation";
 import {usePage} from "./hooks/usePage";
 import Router from "./Router";
+import Box from "@mui/material/Box";
 
 function App() {
     return (
-        <>
-            <Provider store={store}>
-                <Desktop/>
-                <Tablet/>
-                <Mobile/>
-            </Provider>
-        </>
+        <Box display='flex' justifyContent='space-evenly'>
+            <Box display={{xs: 'none', lg: 'flex'}} width='300px' bgcolor='yellowgreen'/>
+            <MainLayout>
+                <Router/>
+            </MainLayout>
+        </Box>
     );
 }
 
@@ -38,40 +35,6 @@ const PageComponent = () => {
             return <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>;
             ;
     }
-}
-const Desktop = () => {
-    const isDesktop = useMediaQuery({minWidth: 1025})
-    return isDesktop ? (
-        <div className='desktop-frame'>
-            <div className='smop'>SMOP</div>
-            <div className='desktop'>
-                <MainLayout>
-                    <PageComponent/>
-                </MainLayout>
-            </div>
-        </div>
-    ) : null
-}
-const Tablet = () => {
-    const isTablet = useMediaQuery({minWidth: 768, maxWidth: 1024})
-    return isTablet ? (
-        <div className='tablet'>
-            <MainLayout>
-                <Router/>
-                <PageComponent/>
-            </MainLayout>
-        </div>
-    ) : null
-}
-const Mobile = () => {
-    const isMobile = useMediaQuery({maxWidth: 767})
-    return isMobile ? (
-        <div className='mobile'>
-            <MainLayout>
-                <PageComponent/>
-            </MainLayout>
-        </div>
-    ) : null
 }
 
 export default App;
