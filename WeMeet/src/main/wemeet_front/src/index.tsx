@@ -7,6 +7,8 @@ import {CssBaseline} from "@mui/material";
 import {BrowserRouter} from "react-router-dom";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import './assets/fonts/Font.css';
+import {Provider} from "react-redux";
+import store from "./store";
 
 // 테마 생성
 const theme = createTheme({
@@ -23,9 +25,11 @@ root.render(
         {/* 테마 적용 */}
         <ThemeProvider theme={theme}>
             <CssBaseline enableColorScheme>
-                <BrowserRouter>
-                    <App/>
-                </BrowserRouter>
+                <Provider store={store}>
+                    <BrowserRouter>
+                        <App/>
+                    </BrowserRouter>
+                </Provider>
             </CssBaseline>
         </ThemeProvider>
     </React.StrictMode>

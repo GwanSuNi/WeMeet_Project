@@ -1,18 +1,10 @@
 import Box from "@mui/material/Box";
-import SignUp from "../components/SignUp";
 import StickyFooter from "../components/StickyFooter";
 import React from "react";
 
 export default function MainLayout(props: { children: React.ReactNode }) {
     return (
-        <Box sx={{
-            maxWidth: '1080px',
-            margin: 'auto',
-
-            '@media (min-width: 1080px)' : {
-                backgroundColor:"black"
-            }
-        }}>
+        <Box width='600px' bgcolor='white'>
             <main
                 style={{
                     display: 'flex',
