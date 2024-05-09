@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './App.css';
-import SignUp from "./components/SignUp";
 import MainLayout from "./layout/MainLayout";
 import {useMediaQuery} from 'react-responsive'
 import CourseSuggest from "./components/CourseSuggest";
-import {Provider, useSelector} from "react-redux";
+import {Provider} from "react-redux";
 import store from "./store";
 import MapInformation from "./components/MapInfomation";
 import {usePage} from "./hooks/usePage";
+import Router from "./Router";
 
 function App() {
     return (
@@ -20,6 +20,7 @@ function App() {
         </>
     );
 }
+
 const PageComponent = () => {
     const page = usePage(); // redux에서 page값을 조회하는 커스텀 hook
     const geo: any = {
@@ -34,7 +35,8 @@ const PageComponent = () => {
         case 2:
             return <div>People Pick</div>;
         default:
-            return <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>;;
+            return <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>;
+            ;
     }
 }
 const Desktop = () => {
@@ -55,12 +57,8 @@ const Tablet = () => {
     return isTablet ? (
         <div className='tablet'>
             <MainLayout>
-                {/*<SignUp/>*/}
-                {/*<MapTest/>*/}
-                {/*page state에 따라 어떤 컴포넌트를 보여줄지 분기해주는 코드*/}
-                {/*<MapInformation latitude={geo.latitude} longitude={geo.logitude}/>*/}
+                <Router/>
                 <PageComponent/>
-                {/*<WeMeetLogo text={"AI 데이트 코스 추천"}/>*/}
             </MainLayout>
         </div>
     ) : null

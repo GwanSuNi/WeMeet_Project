@@ -7,6 +7,7 @@ import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined
 import PersonIcon from '@mui/icons-material/Person';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import HistoryIcon from '@mui/icons-material/History';
+import DateLogDrawer from "./DateLogDrawer";
 
 let mapInstance: naver.maps.Map | null = null;
 
@@ -111,67 +112,83 @@ function MapContent() {
         setIsHovered((prevState) => ({ ...prevState, [name]: false }));
     };
 
+    // 데이트 기록 Drawer
+    const [activeDrawer, setActiveDrawer] = useState(false);
+
+    const toggleDrawer = (active: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+        if (event && event.type === 'keydown' &&
+            ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+            return;
+        }
+
+        setActiveDrawer(active);
+    };
+
     return (
-        <Box sx={{
-            width: '100%', height: 'calc(100vh - 56px)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center', // 수평 가운데 정렬
-            alignItems: 'center',
-            position: 'relative', // Box 컴포넌트에 상대적인 위치 설정
-        }}>
-            <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>
-            <Fab color="inherit" size={"medium"} aria-label="myInfo" sx={{
-                position: 'absolute',
-                left: '10px',
-                top: '10px',
-                // '&:hover': {
-                //     backgroundColor: 'transparent',
-                // },
-            }}
-                 onMouseEnter={() => handleMouseEnter('myInfo')}
-                 onMouseLeave={() => handleMouseLeave('myInfo')}>
-                {isHovered.myInfo ? (
-                    <PersonIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
-                ) : (
-                    <PersonOutlinedIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
-                )}
-            </Fab>
-            <Fab size={"medium"} color="inherit" aria-label="notification" sx={{
-                position: 'absolute',
-                right: '70px',
-                top: '10px'
-            }}
-                 onMouseEnter={() => handleMouseEnter('notification')}
-                 onMouseLeave={() => handleMouseLeave('notification')}>
-                {isHovered.notification ? (
-                    <NotificationsIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
-                ) : (
-                    <NotificationsOutlinedIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
-                )}
-            </Fab>
-            <Fab size={"medium"} color="inherit" aria-label="history" sx={{
-                position: 'absolute',
-                right: '10px',
-                top: '10px'
-            }}
-                 onMouseEnter={() => handleMouseEnter('history')}
-                 onMouseLeave={() => handleMouseLeave('history')}>
-                {/*<HistoryIcon/>*/}
-                {isHovered.history ? (
-                    <HistoryIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
-                ) : (
-                    <HistoryIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
-                )}
-            </Fab>
-            <Fab variant="extended" size="medium" color="primary" sx={{
-                position: 'absolute', // 절대 위치 설정
-                bottom: '20px', // 하단 여백
+        <>
+            <Box sx={{
+                width: '100%', height: 'calc(100vh - 56px)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center', // 수평 가운데 정렬
+                alignItems: 'center',
+                position: 'relative', // Box 컴포넌트에 상대적인 위치 설정
             }}>
-                <CreateIcon sx={{mr: 1}}/>
-                일지 작성
-            </Fab>
-        </Box>);
+                <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>
+                <Fab color="inherit" size={"medium"} aria-label="myInfo" sx={{
+                    position: 'absolute',
+                    left: '10px',
+                    top: '10px',
+                    // '&:hover': {
+                    //     backgroundColor: 'transparent',
+                    // },
+                }}
+                     onMouseEnter={() => handleMouseEnter('myInfo')}
+                     onMouseLeave={() => handleMouseLeave('myInfo')}>
+                    {isHovered.myInfo ? (
+                        <PersonIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                    ) : (
+                        <PersonOutlinedIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                    )}
+                </Fab>
+                <Fab size={"medium"} color="inherit" aria-label="notification" sx={{
+                    position: 'absolute',
+                    right: '70px',
+                    top: '10px'
+                }}
+                     onMouseEnter={() => handleMouseEnter('notification')}
+                     onMouseLeave={() => handleMouseLeave('notification')}>
+                    {isHovered.notification ? (
+                        <NotificationsIcon color="primary" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                    ) : (
+                        <NotificationsOutlinedIcon color="inherit" sx={{width: '1.5rem', height: '1.5rem'}}/>
+                    )}
+                </Fab>
+                <Fab size={"medium"} color="inherit" aria-label="history" sx={{
+                    position: 'absolute',
+                    right: '10px',
+                    top: '10px'
+                }}
+                     onMouseEnter={() => handleMouseEnter('history')}
+                     onMouseLeave={() => handleMouseLeave('history')}
+                     onClick={toggleDrawer(true)}
+                >
+                    <HistoryIcon
+                        color={isHovered.history ? 'primary' : 'inherit'}
+                        sx={{width: '1.5rem', height: '1.5rem'}}
+                    />
+                </Fab>
+                <Fab variant="extended" size="medium" color="primary" sx={{
+                    position: 'absolute', // 절대 위치 설정
+                    bottom: '20px', // 하단 여백
+                }}>
+                    <CreateIcon sx={{mr: 1}}/>
+                    일지 작성
+                </Fab>
+            </Box>
+            <DateLogDrawer activeDrawer={activeDrawer} toggleDrawer={toggleDrawer}/>
+        </>
+    );
 }
 
 
