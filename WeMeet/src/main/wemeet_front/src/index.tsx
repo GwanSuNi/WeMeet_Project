@@ -1,38 +1,29 @@
-import React from 'react';
+import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {CssBaseline} from "@mui/material";
-import {BrowserRouter} from "react-router-dom";
-import {createTheme, ThemeProvider} from "@mui/material/styles";
-import './assets/fonts/Font.css';
-import {Provider} from "react-redux";
-import store from "./store";
-
-// 테마 생성
-const theme = createTheme({
-    typography: {
-        fontFamily: 'NanumGothic'
-    }
-});
+import {CssBaseline, ThemeProvider} from '@mui/material';
+import {BrowserRouter} from 'react-router-dom';
+import theme from './themes'
+import {Provider} from 'react-redux';
+import store from './store';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
-        {/* 테마 적용 */}
+    <StrictMode>
         <ThemeProvider theme={theme}>
-            <CssBaseline enableColorScheme>
-                <Provider store={store}>
-                    <BrowserRouter>
+            <CssBaseline>
+                <BrowserRouter>
+                    <Provider store={store}>
                         <App/>
-                    </BrowserRouter>
-                </Provider>
+                    </Provider>
+                </BrowserRouter>
             </CssBaseline>
         </ThemeProvider>
-    </React.StrictMode>
+    </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
