@@ -1,5 +1,3 @@
-import React from 'react';
-import './App.css';
 import CourseSuggest from "./components/CourseSuggest";
 import MapInformation from "./components/MapInfomation";
 import {usePage} from "./hooks/usePage";
