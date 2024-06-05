@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.11.5",
     "@fontsource/roboto": "^5.0.12",
     "@mui/icons-material": "^5.15.15",
+    "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.15",
     "@reduxjs/toolkit": "^2.2.3",
     "@testing-library/jest-dom": "^5.17.0",
@@ -26,10 +27,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test"
   },
   "eslintConfig": {
     "extends": [
@@ -50,6 +50,8 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.1.0",
+    "@craco/types": "^7.1.0",
     "@types/navermaps": "^3.7.5"
   }
 }
