@@ -6,6 +6,7 @@ import CourseSuggest from "../components/CourseSuggest";
 import React from "react";
 import PeoplePickCard from "../components/PeoplePick";
 import PeoplePickCardReadMore from "../components/PeoplePickReadMore";
+import  {CoupleInfoComponent, NoCoupleInfoComponent} from "../pages/CoupleInfoPage";
 
 const geo: any = {
     latitude: 37.3595704,
@@ -36,6 +37,14 @@ const MainRoutes = [
             {
                 path: 'diary',
                 element: <DateDiaryListPage/>
+            },
+            {
+                path: 'coupleinfo',
+                element: <CoupleInfoComponent/>
+            },
+            {
+                path: 'nocoupleinfo',
+                element:<NoCoupleInfoComponent/>
             }
         ]
     },
