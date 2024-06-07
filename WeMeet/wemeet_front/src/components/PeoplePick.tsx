@@ -45,14 +45,9 @@ export default function PeoplePickCard() {
                                         <Typography variant="h6">
                                             크리스마스
                                         </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'space-between'}}>
-                                            <Tooltip title="석촌호수" sx={{mt:1}}>
-                                                <PlaceIcon />
-                                            </Tooltip>
                                         <IconButton>
                                             <FavoriteIcon/>
                                         </IconButton>
-                                        </Box>
                                     </Box>
                                     <CardMedia
                                         component="img"
@@ -60,6 +55,14 @@ export default function PeoplePickCard() {
                                         image="/image/catTest.jpeg"
                                         sx={{ width: '100%', maxWidth: '250px', height: 'auto' }}
                                     />
+                                    <Box sx={{display:'flex', alignItems:'center'}}>
+                                        <Tooltip title="석촌호수">
+                                            <PlaceIcon sx={{height:'10px', width:'10px' , marginTop:'2'}} />
+                                        </Tooltip>
+                                        <Typography sx={{ marginTop:'2',fontSize:'10px',display:'flex',justifyContent:'space-between'}}>
+                                            석촌호수
+                                        </Typography>
+                                    </Box>
                                 </Item>
                             </Grid>
                         </Grid>
