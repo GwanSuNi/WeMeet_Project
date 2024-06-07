@@ -1,4 +1,4 @@
 package com.example.WeMeet.post.service;
 
-public class PostServiceImpl {
+public class PostServiceImpl implements PostService{
 }

@@ -19,6 +19,8 @@ public class Post {
     @Id
     @GeneratedValue
     private UUID postID;
+    // 작성자 , FK
+    private UUID memberID;
     private String title;
     private String content;
     private String imgPath;
