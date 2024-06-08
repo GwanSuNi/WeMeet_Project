@@ -1,4 +1,4 @@
-package com.example.WeMeet.post.domain;
+package com.example.WeMeet.member.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.UUID;
 
 @Entity
@@ -15,19 +14,16 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Post {
+public class Member {
     @Id
     @GeneratedValue
-    private UUID postID;
-    // 작성자 , FK
     private UUID memberID;
-    private String title;
-    private String content;
-    private String imgPath;
-    // 위치정보
-    private String positionInfo;
-    private long like;
-    // 공개여부
-    private boolean disclosure;
-    private long visitCount;
+    //
+    private UUID pairUUID;
+    private String bloodType;
+    private String name;
+    private String birth;
+    private String nickName;
+    private String registerDate;
+    // TODO 공개정보 컬럼 넣기
 }
