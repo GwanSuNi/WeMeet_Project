@@ -1,6 +1,5 @@
 package com.example.WeMeet.post.domain.dto;
 
-import jakarta.persistence.GeneratedValue;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,19 +7,15 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostDto {
+public class CommentDto {
+    private UUID commentID;
     private UUID postID;
-    private UUID memberID;
-    private String title;
     private String content;
-    private String imgPath;
-    private String positionInfo;
+    private String userName;
     private LocalDateTime createdAt;
-    private long like;
-    private boolean disclosure;
-    private long visitCount;
 }

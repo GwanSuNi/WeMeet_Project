@@ -18,12 +18,14 @@ public class Member {
     @Id
     @GeneratedValue
     private UUID memberID;
-    //
+    // 공유아이디
     private UUID pairUUID;
+    // 혈액형
     private String bloodType;
+    // 이름
     private String name;
-    private String birth;
     private String nickName;
+    private String birth;
     private String registerDate;
-    // TODO 공개정보 컬럼 넣기
+    // TODO 공개정보 ENUM 컬럼 넣기
 }

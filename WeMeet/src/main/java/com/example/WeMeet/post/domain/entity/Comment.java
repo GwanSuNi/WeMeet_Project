@@ -16,26 +16,16 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Post {
+public class Comment {
     @Id
     @GeneratedValue
+    private UUID commentID;
+    // FK 게시물 ID
     private UUID postID;
-    // 작성자 , FK
-    private UUID memberID;
-    // 여러가지 이미지 FK
-    private UUID imgUUID;
-    // 제목
-    private String title;
-    // 내용
+    // 댓글 내용
     private String content;
-    // 위치정보
-    private String positionInfo;
-    // 생성날짜
+    // 현재 로그인한 Member 의 userName
+    private String userName;
+    // 작성 시간
     private LocalDateTime createdAt;
-    // 좋아요 수
-    private long like;
-    // 공개여부
-    private boolean disclosure;
-    // 조회수
-    private long visitCount;
 }
