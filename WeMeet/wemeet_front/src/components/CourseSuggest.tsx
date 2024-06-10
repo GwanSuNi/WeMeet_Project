@@ -13,7 +13,7 @@ export default function CourseSuggest() {
     return (
         <>
             <Container sx={{
-                maxWidth: '1080px',
+                maxWidth: '600px',
                 width: '100%', height: 'calc(100vh - 56px)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -48,8 +48,8 @@ function OutlinedCard() {
     return (
         <Box display={'flex'}
              flexDirection={'column'}
-             sx={{maxWidth: '1080px', minWidth: 275, width: '70vw', padding: "10px"}}>
-            <Card variant="outlined">{card}</Card>
+             sx={{maxWidth: '550px', minWidth: 275, width: '70vw', padding: "10px"}}>
+            <Card variant="outlined" sx={{ maxWidth: '600px', width: '100%' }}>{card}</Card>
             <SuggestInput/>
             <Button variant="contained" endIcon={<SendIcon/>} sx={{
                 maxWidth: '100px',
@@ -69,13 +69,12 @@ function SuggestInput() {
             component="form"
             noValidate
             autoComplete="off"
-            maxWidth={'1080px'}
             sx={{pt: '10px', pb: '10px'}}
         >
             <Box
                 component="form"
                 sx={{
-                    '& .MuiTextField-root': {mt: '2px', maxWidth: '100rem', minWidth: '250Px'},
+                    '& .MuiTextField-root': {mt: '2px', minWidth: '250Px'},
                 }}
                 noValidate
                 autoComplete="off"
@@ -90,6 +89,7 @@ function SuggestInput() {
                     sx={{
                         minWidth: '200px',
                         width: '100%', // 너비를 100%로 설정하여 화면의 너비에 따라 조절
+                        maxWidth: '600px', // 최대 너비를 815px로 설정
                         mr: '10px',
                     }}
                 />
