@@ -2,7 +2,7 @@ package com.example.WeMeet.jwt.filter;
 
 import com.example.WeMeet.jwt.dto.CustomUserDetails;
 import com.example.WeMeet.jwt.util.JwtUtil;
-import com.example.WeMeet.member.entity.Member;
+import com.example.WeMeet.member.domain.entity.Member;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

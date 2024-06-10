@@ -1,6 +1,6 @@
 package com.example.WeMeet.jwt.dto;
 
-import com.example.WeMeet.member.entity.Member;
+import com.example.WeMeet.member.domain.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
