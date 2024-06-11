@@ -30,6 +30,7 @@ public class JoinService {
         data.setNickname(joinDto.getNickname());
         data.setRole("ROLE_" + joinDto.getRole());
         data.setBirth(joinDto.getBirth());
+        data.setBloodType(joinDto.getBloodType());
         data.setRegistDate(LocalDateTime.now());
         userRepository.save(data);
     }

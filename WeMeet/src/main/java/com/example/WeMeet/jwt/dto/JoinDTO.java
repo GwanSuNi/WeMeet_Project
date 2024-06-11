@@ -11,4 +11,5 @@ public class JoinDTO {
     private String nickname;
     private String birth;
     private String role;
+    private String bloodType;
 }
