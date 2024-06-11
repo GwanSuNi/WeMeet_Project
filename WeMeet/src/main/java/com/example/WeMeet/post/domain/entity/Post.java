@@ -1,8 +1,6 @@
 package com.example.WeMeet.post.domain.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,12 +16,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class Post {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID postID;
     // 작성자 , FK
     private UUID memberID;
-    // 여러가지 이미지 FK
-    private UUID imgUUID;
     // 제목
     private String title;
     // 내용
@@ -38,4 +34,10 @@ public class Post {
     private boolean disclosure;
     // 조회수
     private long visitCount;
+
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDateTime.now();
+        this.like = 0;
+    }
 }
