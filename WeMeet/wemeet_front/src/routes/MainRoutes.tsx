@@ -7,6 +7,7 @@ import React from "react";
 import PeoplePickCard from "../components/PeoplePick";
 import PeoplePickCardReadMore from "../components/PeoplePickReadMore";
 import  {CoupleInfoComponent, NoCoupleInfoComponent} from "../pages/CoupleInfoPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 const geo: any = {
     latitude: 37.3595704,
@@ -20,7 +21,7 @@ const MainRoutes = [
         children: [
             {
                 path: '/',
-                element: <MapInformation latitude={geo.latitude} longitude={geo.logitude}/>
+                element: <ProtectedRoute element={<MapInformation latitude={geo.latitude} longitude={geo.logitude}/>}/>
             },
             {
                 path: 'course',
@@ -39,11 +40,11 @@ const MainRoutes = [
                 element: <DateDiaryListPage/>
             },
             {
-                path: 'coupleinfo',
+                path: 'coupleInfo',
                 element: <CoupleInfoComponent/>
             },
             {
-                path: 'nocoupleinfo',
+                path: 'noCoupleInfo',
                 element:<NoCoupleInfoComponent/>
             }
         ]

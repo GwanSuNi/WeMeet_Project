@@ -6,7 +6,7 @@ import Routes from "./routes";
 
 function App() {
     return (
-        <Box display='flex' justifyContent='space-evenly' bgcolor='black'>
+        <Box display='flex' justifyContent='space-evenly'>
             <Box display={{xs: 'none', lg: 'flex'}} width='300px' bgcolor='yellowgreen'/>
             <Routes/>
         </Box>

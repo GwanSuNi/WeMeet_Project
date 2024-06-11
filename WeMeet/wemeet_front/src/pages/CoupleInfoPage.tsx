@@ -146,9 +146,9 @@ const NoCoupleInfoComponent = () => {
 
                 <Grid item>
                     <Typography variant="h6" align="center">
-                        나의 코드 : a13049Bfd
+                        나의 이메일 : a13049Bfd
                     </Typography>
-                    <TextField sx={{width: '250px'}} placeholder={"연인의 코드를 입력해주세요!"} variant="outlined"/>
+                    <TextField sx={{width: '250px'}} placeholder={"연인의 이메일을 입력해주세요!"} variant="outlined"/>
                 </Grid>
 
                 <Grid container direction="column" alignItems="flex-start" spacing={3}
