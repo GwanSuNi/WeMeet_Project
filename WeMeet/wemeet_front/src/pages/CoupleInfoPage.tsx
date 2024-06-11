@@ -6,6 +6,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import {styled} from "@mui/system";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
+import SendIcon from "@mui/icons-material/Send";
 
 const CoupleInfoComponent = () => {
     return (
@@ -149,6 +150,13 @@ const NoCoupleInfoComponent = () => {
                         나의 코드 : a13049Bfd
                     </Typography>
                     <TextField sx={{width: '250px'}} placeholder={"연인의 코드를 입력해주세요!"} variant="outlined"/>
+                    <Button variant="contained" endIcon={<SendIcon/>} sx={{
+                        maxWidth: '150px',
+                        alignSelf: 'center',
+                        marginLeft:'10px'
+                    }}>
+                        연인찾기
+                    </Button>
                 </Grid>
 
                 <Grid container direction="column" alignItems="flex-start" spacing={3}

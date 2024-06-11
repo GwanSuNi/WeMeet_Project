@@ -6,6 +6,9 @@ interface ListItemProps {
     ListItem: React.ElementType;
     listData: any[];
 }
+interface Post {
+
+}
 
 export default function DateList({ ListItem, listData }: ListItemProps) {
     return (
