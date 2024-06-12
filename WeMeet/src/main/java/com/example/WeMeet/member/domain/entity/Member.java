@@ -23,6 +23,7 @@ public class Member {
     private String role;
     private String birth;
     private String bloodType;
+    private UUID coupleUUID = null;
     private LocalDateTime registDate = LocalDateTime.now();
     private boolean isQuit = false;
     private boolean isCouple = false; // CoupleInfo 테이블에서 영향을 받음
