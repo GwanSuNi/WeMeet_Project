@@ -20,7 +20,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class CoupleInfoServiceImpl implements CoupleInfoService {
     private final CoupleInfoRepository coupleInfoRepository;
-    private final CoupleInfoMapper coupleInfoMapper;
     private final MemberRepository memberRepository;
 
     @Override
@@ -31,69 +30,72 @@ public class CoupleInfoServiceImpl implements CoupleInfoService {
         LocalDate coupleDate = makeCoupleRequestDTO.getCoupleDate();
 
         // 이미 커플인 경우
-        if (coupleInfoRepository.findByUserEmail1OrUserEmail2(userEmail1) != null) {
+        if (coupleInfoRepository.findByUser1EmailOrUser2Email(userEmail1) != null) {
             return;
         }
 
         // 커플이 아닌 경우 커플로 등록
         CoupleInfo coupleInfo = new CoupleInfo();
-        coupleInfo.setUserEmail1(userEmail1);
-        coupleInfo.setUserEmail2(userEmail2);
+        coupleInfo.setUser1Email(userEmail1);
+        coupleInfo.setUser2Email(userEmail2);
         coupleInfo.setCoupleDate(coupleDate);
         coupleInfo.setCouple(true);
-        coupleInfoRepository.save(coupleInfo);
+        UUID coupleUUID = coupleInfoRepository.save(coupleInfo).getCoupleUUID();
 
         // 커플 등록 시 커플 상태로 변경
         memberRepository.updateCoupleStateByEmail(userEmail1, true);
         memberRepository.updateCoupleStateByEmail(userEmail2, true);
+        memberRepository.updatePairUUIDByEmail(userEmail1, userEmail2, coupleUUID);
     }
 
     @Override
     @Transactional
-    public void breakCouple(UUID pairUUID) {
-        if (!isCouple(pairUUID)) {
+    public void breakCouple(UUID coupleUUID) {
+        if (!isCouple(coupleUUID)) {
             return;
         }
         // 커플인 경우 커플 해제
 
-        CoupleInfo coupleInfo = coupleInfoRepository.findByPairUUID(pairUUID);
+        CoupleInfo coupleInfo = coupleInfoRepository.findByCoupleUUID(coupleUUID);
         coupleInfo.setCouple(false);
         coupleInfoRepository.save(coupleInfo);
 
         // 커플 해제 시 커플 상태 해제
-        memberRepository.updateCoupleStateByEmail(coupleInfo.getUserEmail1(), false);
-        memberRepository.updateCoupleStateByEmail(coupleInfo.getUserEmail2(), false);
+        memberRepository.updateCoupleStateByEmail(coupleInfo.getUser1Email(), false);
+        memberRepository.updateCoupleStateByEmail(coupleInfo.getUser2Email(), false);
+        memberRepository.updatePairUUIDByEmail(coupleInfo.getUser1Email(), coupleInfo.getUser2Email(), null);
     }
 
     @Override
-    public boolean isCouple(UUID parUUID) {
-        return coupleInfoRepository.isCoupleByPairUUID(parUUID);
+    public boolean isCouple(UUID coupleUUID) {
+        return coupleInfoRepository.isCoupleByCoupleUUID(coupleUUID);
     }
 
     @Override
-    public UUID getPairUUID(String userEmail) {
-        CoupleInfo coupleInfo = coupleInfoRepository.findByUserEmail1OrUserEmail2(userEmail);
+    public UUID getCoupleUUID(String userEmail) {
+        CoupleInfo coupleInfo = coupleInfoRepository.findByUser1EmailOrUser2Email(userEmail);
         if (coupleInfo == null) {
             return null;
         }
-        return coupleInfo.getPairUUID();
+        return coupleInfo.getCoupleUUID();
     }
 
     @Override
     public CoupleInfoDTO getCoupleInfo(String userEmail) {
         // 커플이 아닌 경우
-        if (coupleInfoRepository.findByUserEmail1OrUserEmail2(userEmail) == null) {
+        if (coupleInfoRepository.findByUser1EmailOrUser2Email(userEmail) == null) {
             log.warn("Not a couple");
             return null;
         }
-        return coupleInfoMapper.toDTO(coupleInfoRepository.findByUserEmail1OrUserEmail2(userEmail));
+        UUID coupleUUID = coupleInfoRepository.findCoupleUUIDByUser1EmailOrUser2Email(userEmail);
+        return coupleInfoRepository.findCoupleInfoDTOByCoupleUUID(coupleUUID);
     }
 
     @Override
-    public CoupleInfoDTO getCoupleInfo(UUID pairUUID) {
-        if (!isCouple(pairUUID)) {
+    public CoupleInfoDTO getCoupleInfo(UUID coupleUUID) {
+        if (!isCouple(coupleUUID)) {
             return null;
         }
-        return coupleInfoMapper.toDTO(coupleInfoRepository.findByPairUUID(pairUUID));
+        return coupleInfoRepository.findCoupleInfoDTOByCoupleUUID(coupleUUID);
     }
 }

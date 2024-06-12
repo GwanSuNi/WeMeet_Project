@@ -8,10 +8,10 @@ import java.util.UUID;
 
 public interface CoupleInfoService {
     void makeCouple(MakeCoupleRequestDTO makeCoupleRequestDTO);
-    void breakCouple(UUID pairUUID);
-    boolean isCouple(UUID parUUID);
-    UUID getPairUUID(String userEmail);
+    void breakCouple(UUID coupleUUID);
+    boolean isCouple(UUID coupleUUID);
+    UUID getCoupleUUID(String userEmail);
     CoupleInfoDTO getCoupleInfo(String userEmail);
-    CoupleInfoDTO getCoupleInfo(UUID pairUUID);
+    CoupleInfoDTO getCoupleInfo(UUID coupleUUID);
 
 }

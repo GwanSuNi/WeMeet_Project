@@ -53,8 +53,8 @@ public class CoupleController {
         }
 
         try {
-            UUID pairUUID = coupleInfoService.getPairUUID(breakCoupleRequestDTO.getUserEmail1());
-            coupleInfoService.breakCouple(pairUUID);
+            UUID coupleUUID = coupleInfoService.getCoupleUUID(breakCoupleRequestDTO.getUserEmail1());
+            coupleInfoService.breakCouple(coupleUUID);
             return ResponseEntity.ok("커플 해제 성공");
         } catch (Exception e) {
             log.error(e.getMessage());
