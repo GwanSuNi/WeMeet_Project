@@ -2,12 +2,17 @@ package com.example.WeMeet.post.domain.mapper;
 
 import com.example.WeMeet.post.domain.dto.CreatePostDto;
 import com.example.WeMeet.post.domain.dto.PostDto;
+import com.example.WeMeet.post.domain.dto.PostSummaryDto;
 import com.example.WeMeet.post.domain.dto.UpdatePostDto;
 import com.example.WeMeet.post.domain.entity.Post;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.springframework.stereotype.Component;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 @Component
@@ -29,4 +34,32 @@ public interface PostMapper {
     @Mapping(target = "visitCount", ignore = true)
     void updatePostFromDto(UpdatePostDto updatePostDto, @MappingTarget Post post);
 
+    @Mapping(target = "title", source = "title")
+    @Mapping(target = "positionInfo", source = "positionInfo")
+    @Mapping(target = "stateTime", expression = "java(getStateTime(post.getCreatedAt()))")
+    PostSummaryDto postToPostSummaryDto(Post post);
+
+    List<PostSummaryDto> postsToPostSummaryDtos(List<Post> posts);
+
+    default String getStateTime(LocalDateTime createdAt) {
+        LocalDateTime now = LocalDateTime.now();
+        Duration duration = Duration.between(createdAt, now);
+
+        long days = duration.toDays();
+        if (days > 0) {
+            return days + "일 전";
+        }
+
+        long hours = duration.toHours();
+        if (hours > 0) {
+            return hours + "시간 전";
+        }
+
+        long minutes = duration.toMinutes();
+        if (minutes > 0) {
+            return minutes + "분 전";
+        }
+
+        return "방금 전";
+    }
 }
