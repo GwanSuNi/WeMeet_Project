@@ -24,4 +24,8 @@ public interface MemberRepository  extends JpaRepository<Member, UUID> {
     @Modifying
     @Query("UPDATE Member m SET m.isCouple = :isCouple WHERE m.userEmail = :userEmail")
     void updateCoupleStateByEmail(@Param("userEmail") String userEmail, @Param("isCouple") boolean isCouple);
+
+    @Modifying
+    @Query("UPDATE Member m SET m.coupleUUID = :coupleUUID WHERE (m.userEmail = :user1Email OR m.userEmail = :user2Email)")
+    void updatePairUUIDByEmail(@Param("user1Email") String user1Email, @Param("user2Email") String user2Email, @Param("coupleUUID") UUID coupleUUID);
 }
