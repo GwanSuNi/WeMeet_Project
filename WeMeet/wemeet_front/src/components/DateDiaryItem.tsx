@@ -26,11 +26,14 @@ export default function DateDiaryItem() {
                         제목
                     </Typography>
                     <Grid container spacing={.5}>
-                        <Grid xs display='flex' alignItems='center'>
-                            <LocationOnIcon color='disabled' sx={{fontSize: 15}}/>
-                            <Typography variant='caption' color='text.secondary' noWrap>
-                                경기도 의정부시 서부로 454
-                            </Typography>
+                        <Grid xs display='flex' alignItems='center' spacing={2}>
+                                <LocationOnIcon color='disabled' sx={{fontSize: 15}}/>
+                                <Typography variant='caption' color='text.secondary' noWrap>
+                                    경기도 의정부시 서부로 454
+                                </Typography>
+                                <Typography mx={2} variant='caption' color='text.secondary' noWrap>
+                                    1분전..
+                                </Typography>
                         </Grid>
                         <Grid xs='auto' display='flex'>
                             <Typography variant='caption'>
