@@ -22,8 +22,11 @@ public class Member {
     private String nickname;
     private String role;
     private String birth;
+    private String bloodType;
     private LocalDateTime registDate = LocalDateTime.now();
     private boolean isQuit = false;
+    private boolean isCouple = false; // CoupleInfo 테이블에서 영향을 받음
+
 
     public void quitUser() {
         isQuit = true;

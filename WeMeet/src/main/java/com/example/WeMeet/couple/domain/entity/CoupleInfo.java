@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -18,10 +20,9 @@ public class CoupleInfo {
     @Id
     @GeneratedValue
     private UUID pairUUID;
-    // 남자 ID
-    private UUID maleUUID;
-    // 여자 ID
-    private UUID femaleUUID;
-    private String coupleName;
-    private boolean coupleState;
+    private String userEmail1;
+    private String userEmail2;
+//    private String coupleName;
+    private boolean isCouple;
+    private LocalDate coupleDate;
 }
