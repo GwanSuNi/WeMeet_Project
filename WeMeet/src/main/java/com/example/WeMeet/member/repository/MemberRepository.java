@@ -1,6 +1,6 @@
 package com.example.WeMeet.member.repository;
 
-import com.example.WeMeet.member.entity.Member;
+import com.example.WeMeet.member.domain.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 

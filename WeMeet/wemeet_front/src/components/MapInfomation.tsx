@@ -8,6 +8,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import HistoryIcon from '@mui/icons-material/History';
 import DateLogDrawer from "./DateLogDrawer";
+import {useNavigate} from "react-router-dom";
 
 let mapInstance: naver.maps.Map | null = null;
 
@@ -104,6 +105,8 @@ function MapContent() {
         notification: false,
         history: false,
     });
+    const navigate = useNavigate();
+
     const handleMouseEnter = (name: keyof typeof isHovered) => {
         setIsHovered((prevState) => ({ ...prevState, [name]: true }));
     };
@@ -135,7 +138,7 @@ function MapContent() {
                 position: 'relative', // Box 컴포넌트에 상대적인 위치 설정
             }}>
                 <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>
-                <Fab color="inherit" size={"medium"} aria-label="myInfo" sx={{
+                <Fab onClick={() => navigate('/coupleInfo')} color="inherit" size={"medium"} aria-label="myInfo" sx={{
                     position: 'absolute',
                     left: '10px',
                     top: '10px',

@@ -2,7 +2,7 @@ package com.example.WeMeet.jwt.service;
 
 import com.example.WeMeet.jwt.dto.CustomUserDetails;
 import com.example.WeMeet.jwt.repository.UserRepository;
-import com.example.WeMeet.member.entity.Member;
+import com.example.WeMeet.member.domain.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

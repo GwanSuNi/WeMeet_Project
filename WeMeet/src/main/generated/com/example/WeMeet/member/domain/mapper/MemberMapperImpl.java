@@ -1,13 +1,13 @@
-package com.example.WeMeet.member.mapper;
+package com.example.WeMeet.member.domain.mapper;
 
-import com.example.WeMeet.member.dto.MemberDTO;
-import com.example.WeMeet.member.entity.Member;
+import com.example.WeMeet.member.domain.dto.MemberDTO;
+import com.example.WeMeet.member.domain.entity.Member;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-10T18:29:27+0900",
+    date = "2024-06-10T20:17:36+0900",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.11 (Azul Systems, Inc.)"
 )
 @Component

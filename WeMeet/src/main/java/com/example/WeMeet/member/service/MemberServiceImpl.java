@@ -1,6 +1,6 @@
 package com.example.WeMeet.member.service;
 
-import com.example.WeMeet.member.dto.MemberDTO;
+import com.example.WeMeet.member.domain.dto.MemberDTO;
 import com.example.WeMeet.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

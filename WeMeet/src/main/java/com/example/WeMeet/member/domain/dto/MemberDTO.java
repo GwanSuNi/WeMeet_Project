@@ -1,4 +1,4 @@
-package com.example.WeMeet.member.dto;
+package com.example.WeMeet.member.domain.dto;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
