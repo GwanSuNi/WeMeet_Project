@@ -3,6 +3,7 @@ package com.example.WeMeet.post.service;
 import com.example.WeMeet.global.exception.ValidationException;
 import com.example.WeMeet.post.domain.dto.CreatePostDto;
 import com.example.WeMeet.post.domain.dto.PostDto;
+import com.example.WeMeet.post.domain.dto.PostSummaryDto;
 import com.example.WeMeet.post.domain.dto.UpdatePostDto;
 import com.example.WeMeet.post.domain.entity.Post;
 import com.example.WeMeet.post.domain.entity.PostPhoto;
@@ -60,6 +61,9 @@ public class PostServiceImpl implements PostService {
         Post post = postRepository.findById(postUUID).orElseThrow(
                 () -> new ValidationException("Not Found Post"));
         return postMapper.toDto(post);
+    }
+    public List<PostSummaryDto> getPostSummary(String userEmail) {
+        return null;
     }
 
     /**
