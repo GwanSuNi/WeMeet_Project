@@ -5,7 +5,22 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-export default function DateDiaryItem() {
+export interface PostSummaryDto {
+    // 얼굴사진 링크
+    imgPath: string;
+    // 제목
+    title: string;
+    // ex) 1시간전, 몇시간전, 하루전 ..
+    stateTime: string;
+    // 위치 정보
+    positionInfo: string;
+}
+
+interface DateDiaryItemProps {
+    post: PostSummaryDto;
+}
+
+export default function DateDiaryItem({ post }: DateDiaryItemProps) {
     return (
         <Card component={Button} sx={{
             p: 1.5,
@@ -14,7 +29,7 @@ export default function DateDiaryItem() {
         }}>
             <Grid container width='100%'>
                 <Grid xs='auto' my='auto' pr={1.3}>
-                    <Avatar src=''/>
+                    <Avatar src={post.imgPath}/>
                 </Grid>
                 <Grid xs direction='column'>
                     <Typography
@@ -23,21 +38,16 @@ export default function DateDiaryItem() {
                         textAlign='left'
                         fontStyle='normal'
                     >
-                        제목
+                        {post.title}
                     </Typography>
                     <Grid container spacing={.5}>
                         <Grid xs display='flex' alignItems='center' spacing={2}>
-                                <LocationOnIcon color='disabled' sx={{fontSize: 15}}/>
-                                <Typography variant='caption' color='text.secondary' noWrap>
-                                    경기도 의정부시 서부로 454
-                                </Typography>
-                                <Typography mx={2} variant='caption' color='text.secondary' noWrap>
-                                    1분전..
-                                </Typography>
-                        </Grid>
-                        <Grid xs='auto' display='flex'>
-                            <Typography variant='caption'>
-                                24.03.17
+                            <LocationOnIcon color='disabled' sx={{fontSize: 15}}/>
+                            <Typography variant='caption' color='text.secondary' noWrap>
+                                {post.positionInfo}
+                            </Typography>
+                            <Typography mx={2} variant='caption' color='text.secondary' noWrap>
+                                {post.stateTime}
                             </Typography>
                         </Grid>
                     </Grid>

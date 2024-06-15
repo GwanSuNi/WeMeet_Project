@@ -21,7 +21,6 @@ import java.util.UUID;
 @Slf4j
 public class PostController {
     private final PostPhotoService postPhotoService;
-    @Qualifier("postServiceImpl")
     private final PostService postService;
 
     @PostMapping("/upload")

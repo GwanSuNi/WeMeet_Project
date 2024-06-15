@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;
 
-public interface PostPhotoRepository extends JpaRepository<PostPhoto, Long> {
+public interface PostPhotoRepository extends JpaRepository<PostPhoto, UUID> {
+    //
     List<PostPhoto> findByPhotoUUID(UUID photoUUID);
     // 특정 postUUID 를 가진 PostPhoto 엔티티의 개수를 얻을 수 있다
     int countByPostUUID(UUID postUUID);
