@@ -6,7 +6,7 @@ import CourseSuggest from "../components/CourseSuggest";
 import React from "react";
 import PeoplePickCard from "../components/PeoplePick";
 import PeoplePickCardReadMore from "../components/PeoplePickReadMore";
-import  {CoupleInfoComponent, NoCoupleInfoComponent} from "../pages/CoupleInfoPage";
+import SettingComponent, {CoupleInfoComponent} from "../pages/CoupleInfoPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const geo: any = {
@@ -40,13 +40,18 @@ const MainRoutes = [
                 element: <DateDiaryListPage/>
             },
             {
-                path: 'coupleInfo',
-                element: <CoupleInfoComponent/>
+                path: 'setting',
+                children: [
+                    {
+                        path: '',
+                        element: <SettingComponent/>
+                    },
+                    {
+                        path: 'coupleInfo',
+                        element: <CoupleInfoComponent/>
+                    }
+                ],
             },
-            {
-                path: 'noCoupleInfo',
-                element:<NoCoupleInfoComponent/>
-            }
         ]
     },
     {

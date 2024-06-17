@@ -138,7 +138,7 @@ function MapContent() {
                 position: 'relative', // Box 컴포넌트에 상대적인 위치 설정
             }}>
                 <div id="map" style={{width: '100%', height: 'calc(100vh - 56px)'}}/>
-                <Fab onClick={() => navigate('/coupleInfo')} color="inherit" size={"medium"} aria-label="myInfo" sx={{
+                <Fab onClick={() => navigate('/setting')} color="inherit" size={"medium"} aria-label="myInfo" sx={{
                     position: 'absolute',
                     left: '10px',
                     top: '10px',
