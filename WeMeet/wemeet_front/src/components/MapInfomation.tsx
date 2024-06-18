@@ -176,7 +176,7 @@ function MapContent({markerDrawerActive, dateRecordDrawerActive, setDateRecordDr
                 aria-label='myInfo'
                 onMouseEnter={() => handleMouseEnter('myInfo')}
                 onMouseLeave={() => handleMouseLeave('myInfo')}
-                onClick={() => navigate('/coupleInfo')}
+                onClick={() => navigate('/setting')}
                 sx={{
                     position: 'absolute',
                     left: '10px',

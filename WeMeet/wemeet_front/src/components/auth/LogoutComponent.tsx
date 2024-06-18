@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import CheckIcon from '@mui/icons-material/Check';
 import logoutInstance from "../../utils/logoutInstance";
 import {isLoggedIn} from "../../utils/authUtils";
-import {setUsername} from "../../redux/usernameSlice";
+import {setLoginUsername} from "../../redux/usernameSlice";
 
 export default function LogoutComponent() {
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function LogoutComponent() {
             const response = await logoutInstance.post('/api/logout');
             if (response.status === 200) {
                 sessionStorage.removeItem('access');
-                dispatch(setUsername(''));
+                dispatch(setLoginUsername(''));
                 setLogoutSuccess(true);
                 setTimeout(() => {
                     navigate('/login');

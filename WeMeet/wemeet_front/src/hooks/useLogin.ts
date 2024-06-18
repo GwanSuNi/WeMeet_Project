@@ -1,13 +1,14 @@
 import {FormEvent, useState} from 'react';
-import {useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 import loginInstance from "../utils/loginInstance";
-import {RootState} from "../redux/store";
+import {useDispatch} from "react-redux";
+import {setLoginUsername} from "../redux/usernameSlice";
 
 export function useLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
@@ -22,6 +23,7 @@ export function useLogin() {
                     'Content-Type': 'multipart/form-data'
                 }
             });
+            dispatch(setLoginUsername(username));
             navigate('/');
         } catch (error) {
             console.log(username);
@@ -29,5 +31,5 @@ export function useLogin() {
         }
     };
 
-    return {username, setUsername,password, setPassword, handleSubmit};
+    return {username, setUsername, password, setPassword, handleSubmit};
 }

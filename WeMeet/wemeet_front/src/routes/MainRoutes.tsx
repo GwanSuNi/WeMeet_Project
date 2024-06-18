@@ -4,6 +4,7 @@ import MainLayout from "../layout/MainLayout";
 import CourseSuggest from "../components/CourseSuggest";
 import PeoplePickCard from "../components/PeoplePick";
 import PeoplePickCardReadMore from "../components/PeoplePickReadMore";
+import SettingComponent, {CoupleInfoComponent} from "../pages/CoupleInfoPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const geo: any = {
@@ -46,10 +47,20 @@ const MainRoutes = [
                 ]
             },
             {
-                path: 'coupleInfo',
-                element: <CoupleInfoComponent/>
+                path: 'setting',
+                children: [
+                    {
+                        path: '',
+                        element: <SettingComponent/>
+                    },
+                    {
+                        path: 'coupleInfo',
+                        element: <CoupleInfoComponent/>
+                    }
+                ],
             },
             {
+                // 안써요
                 path: 'noCoupleInfo',
                 element: <NoCoupleInfoComponent/>
             }

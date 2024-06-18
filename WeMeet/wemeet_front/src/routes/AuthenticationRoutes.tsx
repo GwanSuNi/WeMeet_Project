@@ -1,5 +1,11 @@
-import LoginComponent from "../components/auth/LoginComponent";
-import JoinComponent from "../components/auth/JoinComponent";
+import Login from "../components/auth/Login";
+import SignUpMethod, {
+    SetBirthDate,
+    SetBloodType,
+    SetEmail,
+    SetNickname,
+    SignUpConfirm
+} from "../components/auth/SignUpPage";
 
 const AuthenticationRoutes = [
     {
@@ -7,13 +13,38 @@ const AuthenticationRoutes = [
         children: [
             {
                 path: '',
-                element: <LoginComponent/>
+                element: <Login/>
             },
         ]
     },
     {
         path: 'signup',
-        element: <JoinComponent/>
+        children: [
+            {
+                path: '',
+                element: <SignUpMethod/>
+            },
+            {
+                path: 'email',
+                element: <SetEmail/>
+            },
+            {
+                path: 'nickname',
+                element: <SetNickname/>
+            },
+            {
+                path: 'birthDate',
+                element: <SetBirthDate/>
+            },
+            {
+                path: 'bloodType',
+                element: <SetBloodType/>
+            },
+            {
+                path: 'confirm',
+                element: <SignUpConfirm/>
+            }
+        ]
     }
 ];
 
