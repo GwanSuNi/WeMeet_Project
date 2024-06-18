@@ -6,6 +6,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TextField from "@mui/material/TextField";
 import {CoupleInfo, useCoupleInfo} from "../hooks/useCoupleInfo";
 import {useNavigate} from "react-router-dom";
+import SendIcon from "@mui/icons-material/Send";
 
 function dDayCount(coupleDate: Date): number {
     // 사귀기 시작한 날짜

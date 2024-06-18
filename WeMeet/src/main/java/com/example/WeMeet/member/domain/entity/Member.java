@@ -28,6 +28,7 @@ public class Member {
     private boolean isQuit = false;
     private boolean isCouple = false; // CoupleInfo 테이블에서 영향을 받음
 
+
     public void quitUser() {
         isQuit = true;
     }

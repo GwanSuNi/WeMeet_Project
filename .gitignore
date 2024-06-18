@@ -1,5 +1,5 @@
 **/build/
-/src/main/resources/
+**/resources/static/
 
 HELP.md
 .gradle
@@ -254,5 +254,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# MapStruct generated files
+generated/
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows,intellij,java,react
