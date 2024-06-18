@@ -1,21 +1,14 @@
-import Box from "@mui/material/Box";
-import StickyFooter from "../components/StickyFooter";
-import React from "react";
+import {Outlet} from 'react-router-dom';
+import {Box, Stack} from '@mui/material';
+import StickyFooter from '../components/StickyFooter';
 
-export default function MainLayout(props: { children: React.ReactNode }) {
+export default function MainLayout() {
     return (
-        <Box width='600px' bgcolor='white'>
-            <main
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    minHeight: 'calc(100vh - 56px)', // - 연산자 앞뒤로 공백 안주면 계산안됨 ㅋㅋ
-                    width:'100%'
-                }}
-            >
-                {props.children}
-            </main>
+        <Stack component={Box} height='100%'>
+            <Box component='main' flex='1'>
+                <Outlet/>
+            </Box>
             <StickyFooter/>
-        </Box>
+        </Stack>
     );
 }

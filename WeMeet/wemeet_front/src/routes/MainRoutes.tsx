@@ -1,27 +1,24 @@
-import {Outlet} from "react-router-dom";
 import MapInformation from "../components/MapInfomation";
-import DateDiaryListPage from "../pages/DateDiaryListPage";
+import {CoupleInfoComponent, DateDiaryListPage, NoCoupleInfoComponent, WriteDiaryPage} from '@pages';
 import MainLayout from "../layout/MainLayout";
 import CourseSuggest from "../components/CourseSuggest";
-import React from "react";
 import PeoplePickCard from "../components/PeoplePick";
 import PeoplePickCardReadMore from "../components/PeoplePickReadMore";
-import  {CoupleInfoComponent, NoCoupleInfoComponent} from "../pages/CoupleInfoPage";
 import ProtectedRoute from "./ProtectedRoute";
 
 const geo: any = {
     latitude: 37.3595704,
-    logitude: 127.105399
+    longitude: 127.105399
 }
 
 const MainRoutes = [
     {
         path: '/',
-        element: <MainLayout><Outlet/></MainLayout>,
+        element: <MainLayout/>,
         children: [
             {
                 path: '/',
-                element: <ProtectedRoute element={<MapInformation latitude={geo.latitude} longitude={geo.logitude}/>}/>
+                element: <ProtectedRoute element={<MapInformation latitude={geo.latitude} longitude={geo.longitude}/>}/>
             },
             {
                 path: 'course',
@@ -37,7 +34,16 @@ const MainRoutes = [
             },
             {
                 path: 'diary',
-                element: <DateDiaryListPage/>
+                children: [
+                    {
+                        path: '',
+                        element: <DateDiaryListPage/>
+                    },
+                    {
+                        path: 'write',
+                        element: <WriteDiaryPage/>
+                    }
+                ]
             },
             {
                 path: 'coupleInfo',
@@ -45,13 +51,13 @@ const MainRoutes = [
             },
             {
                 path: 'noCoupleInfo',
-                element:<NoCoupleInfoComponent/>
+                element: <NoCoupleInfoComponent/>
             }
         ]
     },
     {
         path: '*',
-        element: <div>Not Found</div>
+        element: <div style={{color: 'red'}}>Not Found</div>
     }
 ];
 
