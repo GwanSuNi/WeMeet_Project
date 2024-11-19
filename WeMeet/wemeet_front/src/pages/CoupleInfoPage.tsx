@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import {CoupleInfo, useCoupleInfo} from "../hooks/useCoupleInfo";
 import {useNavigate} from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
+import useUserInfo from '../hooks/useUserInfo';
 
 function dDayCount(coupleDate: Date): number {
     // 사귀기 시작한 날짜
@@ -155,6 +156,7 @@ export default function SettingComponent() {
 
 export function CoupleInfoComponent() {
     const {coupleInfo, setCoupleInfo} = useCoupleInfo();
+    const {userInfo, fetchUserInfo} = useUserInfo();
     const [tab, setTab] = useState<string>('coupleInfo');
     if (!coupleInfo) {
         return (<></>);

@@ -9,10 +9,10 @@ export interface UserInfo {
     bloodType: string;
 }
 
-export default function useMyInfo() {
+export default function useUserInfo() {
     const [userInfo, setUserInfo] = useState<UserInfo>();
 
-    const fetchMyInfo = async () => {
+    const fetchUserInfo = async () => {
         try {
             const response: AxiosResponse = await secInstance.get('/api/member/myInfo',);
             const data = await response.data;
@@ -27,7 +27,7 @@ export default function useMyInfo() {
         }
     };
     useEffect(() => {
-        fetchMyInfo();
+        fetchUserInfo();
     }, []);
-    return {userInfo, fetchMyInfo};
+    return {userInfo, fetchUserInfo};
 }
