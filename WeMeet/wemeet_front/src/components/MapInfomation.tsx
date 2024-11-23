@@ -166,7 +166,7 @@ function MapContent({markerDrawerActive, dateRecordDrawerActive, setDateRecordDr
             alignItems='center'
             position='relative'
             width='100%'
-            height='calc(100vh - 56px)'
+            height='100%'
             overflow='hidden'
         >
             <Box id='map' width='100%' height='100%'/>

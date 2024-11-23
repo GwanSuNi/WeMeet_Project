@@ -134,9 +134,10 @@ export default function WriteDiaryPage() {
                     </ImageList>
                 </Box>
                 <Divider/>
-                <TextField label='위치' defaultValue='' variant='filled' inputProps={{readOnly: true}}/>
-                <Divider/>
+                {/*<TextField label='위치' defaultValue='' variant='filled' inputProps={{readOnly: true}}/>*/}
+                {/*<Divider/>*/}
                 <TextField label='제목을 입력하세요.' variant='outlined'/>
+                <TextField label='위치를 입력하세요.' variant='outlined'/>
                 <TextField label='내용을 입력하세요.' multiline rows={4} variant='outlined'/>
                 <Divider/>
                 <Button variant='contained' sx={{mb: '30px'}} onClick={handleUpload}>

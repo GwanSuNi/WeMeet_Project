@@ -4,6 +4,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import {useNavigate} from "react-router-dom";
 
 export interface PostSummaryDto {
     // 얼굴사진 링크
@@ -20,13 +21,22 @@ interface DateDiaryItemProps {
     post: PostSummaryDto;
 }
 
-export default function DateDiaryItem({ post }: DateDiaryItemProps) {
+export default function DateDiaryItem({post}: DateDiaryItemProps) {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate('/peoplepick/more');
+    }
+
     return (
-        <Card component={Button} sx={{
-            p: 1.5,
-            margin: 'auto',
-            width: '100%'
-        }}>
+        <Card
+            component={Button}
+            onClick={handleNavigate}
+            sx={{
+                p: 1.5,
+                margin: 'auto',
+                width: '100%'
+            }}>
             <Grid container width='100%'>
                 <Grid xs='auto' my='auto' pr={1.3}>
                     <Avatar src={post.imgPath}/>

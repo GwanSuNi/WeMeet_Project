@@ -4,7 +4,7 @@ import StickyFooter from '../components/StickyFooter';
 
 export default function MainLayout() {
     return (
-        <Stack component={Box} height='100%'>
+        <Stack component={Box} display={'flex'} flexDirection={'column'} height='100%'>
             <Box component='main' flex='1'>
                 <Outlet/>
             </Box>

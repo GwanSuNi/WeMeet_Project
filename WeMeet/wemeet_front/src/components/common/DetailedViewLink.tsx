@@ -18,7 +18,7 @@ export default function DetailedViewLink(
     return (
         <Link
             component={RouterLink}
-            to='/'
+            to='/diary'
             display='inline-flex'
             alignItems='center'
             color={color}

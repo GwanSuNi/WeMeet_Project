@@ -1,11 +1,18 @@
 import {KeyboardEvent, MouseEvent} from 'react';
 import {Box, Divider, List, ListItem, ListItemButton, ListItemText, Typography} from '@mui/material';
 import {CustomDrawer, DetailedViewLink} from "@components";
+import {useNavigate} from "react-router-dom";
 
 export default function DateRecordDrawer({active, toggleDrawer}: {
     active: boolean,
     toggleDrawer: (active: boolean) => (event: KeyboardEvent | MouseEvent) => void
 }) {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate('/peoplepick/more');
+    }
+
     return (
         <CustomDrawer anchor='right' active={active} height='100%' right={0}>
             <Box
@@ -27,7 +34,13 @@ export default function DateRecordDrawer({active, toggleDrawer}: {
                 <List>
                     {['24.04.18', '24.04.01', '24.03.19'].map((text) => (
                         <ListItem key={text} disablePadding>
-                            <ListItemButton onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+                            <ListItemButton
+                                onClick={() => {
+                                    toggleDrawer(false);
+                                    handleNavigate();
+                                }}
+                                onKeyDown={toggleDrawer(false)}
+                            >
                                 <ListItemText primary={text}/>
                             </ListItemButton>
                         </ListItem>
