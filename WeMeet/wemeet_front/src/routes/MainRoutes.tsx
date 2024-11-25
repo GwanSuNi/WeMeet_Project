@@ -1,5 +1,5 @@
 import MapInformation from "../components/MapInfomation";
-import {CoupleInfoComponent, DateDiaryListPage, WriteDiaryPage, SettingComponent} from '@pages';
+import {CoupleInfoComponent, DateDiaryListPage, WriteDiaryPage, SettingComponent, EditUserInfoComponent} from '@pages';
 import MainLayout from "../layout/MainLayout";
 import CourseSuggest from "../components/CourseSuggest";
 import PeoplePickCard from "../components/PeoplePick";
@@ -55,6 +55,10 @@ const MainRoutes = [
                     {
                         path: 'coupleInfo',
                         element: <CoupleInfoComponent/>
+                    },
+                    {
+                        path: 'myInfo',
+                        element: <EditUserInfoComponent/>
                     }
                 ],
             },
