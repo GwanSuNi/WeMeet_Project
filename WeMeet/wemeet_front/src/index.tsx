@@ -8,22 +8,24 @@ import {BrowserRouter} from 'react-router-dom';
 import theme from './themes'
 import {Provider} from 'react-redux';
 import store from "./redux/store";
+import SnackbarComponent from "./components/common/SnackbarComponent";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <StrictMode>
+    // <StrictMode>
         <ThemeProvider theme={theme}>
             <CssBaseline>
                 <BrowserRouter>
                     <Provider store={store}>
                         <App/>
+                        <SnackbarComponent/>
                     </Provider>
                 </BrowserRouter>
             </CssBaseline>
         </ThemeProvider>
-    </StrictMode>
+    // </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
